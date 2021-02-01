@@ -62,9 +62,8 @@ void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B)
 		node_A->prev = node_B;
 		node_B->next = node_A;
 		*list = node_B;
-		return;
 	}
-	if (node_A->prev == NULL)
+	else if (node_A->prev == NULL)
 	{
 		node_A->next = t2;
 		node_B->prev = NULL;
@@ -72,16 +71,14 @@ void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B)
 		node_B->next = node_A;
 		t2->prev = node_A;
 		*list = node_B;
-		return;
 	}
-	if (node_B->next == NULL)
+	else if (node_B->next == NULL)
 	{
 		node_A->prev = node_B;
 		node_B->next = node_A;
 		node_B->prev = t1;
 		t1->next = node_B;
 		node_A->next = NULL;
-		return;
 	}
 	else
 	{
@@ -91,6 +88,5 @@ void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B)
 		node_B->prev = t1;
 		t1->next = node_B;
 		t2->prev = node_A;
-		return;
 	}
 }
