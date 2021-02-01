@@ -28,25 +28,41 @@ int is_in(int *array, size_t size, int num)
 {
     size_t i = 0;
     int count = 0;
-
-    
-
+ 
+    for(; i < size; i++)
+    {
+        if (array[i] == num)
+            count++;
+    }
     return (count);
 }
 
 void counting_sort(int *array, size_t size)
 {
-    int largest = 0;
+    int largest = 0, *count_array = NULL, count = 0; 
+    int i = 0, j = 0, index = 0;
 
     largest = largest_int(array, size);
-    printf("El numero maximo es %d\n", largest);
+    count_array = malloc(sizeof(int) * largest + 1);
+    for (i = 0; i < largest + 1; i++)
+    {
+        count += is_in(array, size, i);
+        count_array[i] = count;
+        if (i != largest)
+            printf("%d, ", count_array[i]);
+        else
+            printf("%d\n", count_array[i]);
+    }
+    for (i = 0; i < largest + 1; i++)
+    {
+        if(count_array[i + 1] > count_array[i] && i + 1 <= largest)
+        {
+            j = count_array[i + 1] - count_array[i];
+            for(; j > 0; j--)
+            {
+                array[index++] = i + 1; 
+            }
+        }
+    }
 }
 
-int main(void)
-{
-     int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
-    size_t n = sizeof(array) / sizeof(array[0]);
-
-    counting_sort(array, n);
-    return (0);
-}
