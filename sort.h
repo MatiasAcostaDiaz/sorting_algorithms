@@ -32,4 +32,7 @@ void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B);
 void print_list(const listint_t *list);
 int largest_int(int *array, size_t size);
 int is_in(int *array, size_t size, int num);
+int partition(int *array, ssize_t start, ssize_t next, size_t size);
+void swap(int *a, int *b);
+void quicksort(int *array, ssize_t start, ssize_t next, size_t size);
 #endif
