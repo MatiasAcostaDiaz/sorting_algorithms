@@ -9,32 +9,33 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *aux = NULL, *head = NULL;
+	listint_t *aux = NULL, *temp = NULL, *temp2 = NULL;
 
-	if (!list || !(*list) || !(*list)->next)
+	if (!list || !(*list) || (!(*list)->next))
 		return;
 
 	aux = *list;
-	head = *list;
 
-	if (aux->next == NULL)
-		return;
-
-	while (aux->next)
+	while (aux)
 	{
-		if (aux->n > aux->next->n)
+		if (aux->prev)
 		{
-			swap_nodes(list, aux, aux->next);
-			print_list(head);
-			aux = aux->prev;
-
-			while (aux->prev->n > aux->n && aux)
+			if (aux->prev->n > aux->n)
 			{
+				temp = aux;
+				temp2 = aux;
 				swap_nodes(list, aux->prev, aux);
-				head = *list;
-				print_list(head);
-				if (aux->prev == NULL)
-					break;
+				aux = aux->next;
+				print_list(*list);
+				while (temp2)
+				{
+					if (temp2->n > temp->n)
+					{
+						swap_nodes(list, temp2, temp);
+						print_list(*list);
+					}
+					temp2 = temp2->prev;
+				}
 			}
 		}
 		aux = aux->next;
@@ -51,22 +52,22 @@ void insertion_sort_list(listint_t **list)
 
 void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B)
 {
-	listint_t *t1 = node_A->prev;
-	listint_t *t2 = node_B->next;
-
 	if (node_A->prev == NULL)
 	{
-		node_A->next = t2;
+		listint_t *t1 = node_B->next;
+
+		node_A->next = t1;
 		node_A->prev = node_B;
 		node_B->next = node_A;
 		node_B->prev = NULL;
-		t2->prev = node_A;
+		t1->prev = node_A;
 		*list = node_B;
 		return;
 	}
+
 	if (node_B->next == NULL)
 	{
-		
+		listint_t *t1 = node_A->prev;
 
 		node_B->prev = t1;
 		t1->next = node_B;
@@ -77,6 +78,9 @@ void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B)
 	}
 	else
 	{
+		listint_t *t1 = node_A->prev;
+		listint_t *t2 = node_B->next;
+
 		node_A->next = t2;
 		node_A->prev = node_B;
 		node_B->next = node_A;
