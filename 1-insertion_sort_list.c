@@ -52,6 +52,16 @@ void insertion_sort_list(listint_t **list)
 
 void swap_nodes(listint_t **list, listint_t *node_A, listint_t *node_B)
 {
+	
+	if (node_A->prev == NULL && node_B->next == NULL)
+	{
+		node_A->next = NULL;
+		node_B->prev = NULL;
+		node_A->prev = node_B;
+		node_B->next = node_A;
+		*list = node_B;
+		return;
+	}
 	if (node_A->prev == NULL)
 	{
 		listint_t *t1 = node_B->next;
