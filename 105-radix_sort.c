@@ -67,10 +67,6 @@ void countingSort(int *array, size_t size, int divisor)
 	{
 		count += is_in_2(array, size, i, divisor);
 		count_array[i] = count;
-		if (i + 1 == 10)
-			printf("%d\n", count_array[i]);
-		else
-			printf("%d, ", count_array[i]);
 	}
 
 	for (i = 0; i < 10; i++)
@@ -121,7 +117,6 @@ void radix_sort(int *array, size_t size)
 
 	if (array == NULL || size < 2)
 		return;
-	print_array(array, size);
 	largest = largest_int(array, size);
 	while (largest != 0)
 	{
