@@ -1,10 +1,11 @@
 #include "sort.h"
 
 /**
- * is_in - count how many times appear an element in an array
- * @array: the array
+ * is_in_3 - count how many times appear an element in an array
+ * @copy_array: the array
  * @size: the size of the array
  * @num: element to find
+ * @divisor: the divisor
  * Return: count of times to appear
  */
 int is_in_3(int *copy_array, size_t size, int num, int divisor)
@@ -25,10 +26,11 @@ int is_in_3(int *copy_array, size_t size, int num, int divisor)
 }
 
 /**
- * is_in - count how many times appear an element in an array
+ * is_in_2 - count how many times appear an element in an array
  * @array: the array
  * @size: the size of the array
  * @num: element to find
+ * @divisor: the divisor
  * Return: count of times to appear
  */
 
@@ -49,6 +51,7 @@ int is_in_2(int *array, size_t size, int num, int divisor)
  * countingSort - sort an array using counting sort algorithm
  * @array: The array
  * @size: The size of the array
+ * @divisor: the divisor
  * Return: Nothing
  */
 
@@ -105,7 +108,7 @@ int largest_int(int *array, size_t size)
 }
 
 /**
- * radix_sort -
+ * radix_sort - order an array using the radix sort algorithm
  * @array: The array
  * @size: The size of the array
  * Return: Nothing

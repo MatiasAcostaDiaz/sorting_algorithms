@@ -36,6 +36,7 @@ int partition(int *array, ssize_t start, ssize_t next, size_t size);
 void swap(int *a, int *b);
 void quicksort(int *array, ssize_t start, ssize_t next, size_t size);
 int is_in_3(int *copy_array, size_t size, int num, int divisor);
+int is_in_2(int *array, size_t size, int num, int divisor);
 void mergeSort(int *array, size_t left, size_t right);
 void merge(int *arr, int p, int q, int r);
 void heapify(int *array, size_t size, size_t i, size_t size_print);
