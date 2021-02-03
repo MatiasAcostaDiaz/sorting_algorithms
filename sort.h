@@ -35,4 +35,6 @@ int is_in(int *array, size_t size, int num);
 int partition(int *array, ssize_t start, ssize_t next, size_t size);
 void swap(int *a, int *b);
 void quicksort(int *array, ssize_t start, ssize_t next, size_t size);
+int is_in_3(int *copy_array, size_t size, int num, int divisor);
+
 #endif
